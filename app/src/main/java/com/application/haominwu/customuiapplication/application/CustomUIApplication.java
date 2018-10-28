@@ -1,4 +1,4 @@
-package com.application.haominwu.customuiapplication;
+package com.application.haominwu.customuiapplication.application;
 
 import android.app.Application;
 

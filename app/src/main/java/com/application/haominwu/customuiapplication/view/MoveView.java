@@ -1,4 +1,4 @@
-package com.application.haominwu.customuiapplication;
+package com.application.haominwu.customuiapplication.view;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
