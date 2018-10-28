@@ -9,6 +9,8 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 
+import com.orhanobut.logger.Logger;
+
 
 public class BounceView extends android.support.v7.widget.AppCompatTextView {
 
@@ -36,7 +38,7 @@ public class BounceView extends android.support.v7.widget.AppCompatTextView {
                 if (!isMoving) {
                     ValueAnimator valueAnimator = new ValueAnimator();
                     valueAnimator.setDuration(3000);
-                    valueAnimator.setObjectValues(new PointF(300, 700));
+                    valueAnimator.setObjectValues(new PointF(500, 900));
                     valueAnimator.setInterpolator(new DecelerateInterpolator());
                     valueAnimator.setEvaluator(new TypeEvaluator<PointF>() {
 
@@ -61,9 +63,9 @@ public class BounceView extends android.support.v7.widget.AppCompatTextView {
                         }
                     });
 
+
                     valueAnimator.start();
-
-
+                    
                     isMoving = true;
                 }
             }
