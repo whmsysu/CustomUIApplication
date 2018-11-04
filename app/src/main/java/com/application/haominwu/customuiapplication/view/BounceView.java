@@ -38,8 +38,12 @@ public class BounceView extends android.support.v7.widget.AppCompatTextView {
                 if (!isMoving) {
                     ValueAnimator valueAnimator = new ValueAnimator();
                     valueAnimator.setDuration(3000);
-                    valueAnimator.setObjectValues(new PointF(500, 900));
+                    valueAnimator.setObjectValues(new PointF(getX(), getY()));
                     valueAnimator.setInterpolator(new DecelerateInterpolator());
+
+                    final float nowX = getX();
+                    final float nowY = getY();
+                    
                     valueAnimator.setEvaluator(new TypeEvaluator<PointF>() {
 
                         @Override
@@ -47,8 +51,9 @@ public class BounceView extends android.support.v7.widget.AppCompatTextView {
                                                PointF endValue) {
                             //贝塞尔曲线
                             PointF point = new PointF();
-                            point.x = (1 - fraction) * (1 - fraction) * 0 + 2 * fraction * (1 - fraction) * 250 + fraction * fraction * 500;
-                            point.y = (1 - fraction) * (1 - fraction) * 900 + 2 * fraction * (1 - fraction) * (-800) + fraction * fraction * 900;
+                            float t = fraction;
+                            point.x = (1 - t) * (1 - t) * nowX + 2 * t * (1 - t) * (nowX + 500) + t * t * (nowX + 1000);
+                            point.y = (1 - t) * (1 - t) * nowY + 2 * t * (1 - t) * (nowY - nowY)+ t * t * nowY;
                             return point;
                         }
                     });
@@ -65,7 +70,7 @@ public class BounceView extends android.support.v7.widget.AppCompatTextView {
 
 
                     valueAnimator.start();
-                    
+
                     isMoving = true;
                 }
             }
