@@ -43,7 +43,7 @@ public class BounceView extends android.support.v7.widget.AppCompatTextView {
 
                     final float nowX = getX();
                     final float nowY = getY();
-                    
+
                     valueAnimator.setEvaluator(new TypeEvaluator<PointF>() {
 
                         @Override
@@ -53,7 +53,7 @@ public class BounceView extends android.support.v7.widget.AppCompatTextView {
                             PointF point = new PointF();
                             float t = fraction;
                             point.x = (1 - t) * (1 - t) * nowX + 2 * t * (1 - t) * (nowX + 500) + t * t * (nowX + 1000);
-                            point.y = (1 - t) * (1 - t) * nowY + 2 * t * (1 - t) * (nowY - nowY)+ t * t * nowY;
+                            point.y = (1 - t) * (1 - t) * nowY + 2 * t * (1 - t) * (nowY - nowY) + t * t * nowY;
                             return point;
                         }
                     });
